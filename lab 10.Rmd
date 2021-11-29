@@ -1,0 +1,54 @@
+---
+title: "notes lab 10"
+author: "Sarah Rohlfing"
+date: "11/29/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(beepr)
+library(sf)
+library(cowsay)
+library(tidyverse)
+library(praise)
+library(usethis)
+library(paletteer)
+library(janitor)
+
+```
+
+beeper ::beep() makes beeps. usefull if code takes forever
+
+## for loop+beep
+
+```{r, eval = FALSE}
+
+for (i in rev(seq(1:999))) {
+  print(paste(i, "bottles of beer on the wall"))
+}
+beep(4)
+```
+## praise is nice
+```{r}
+praise("${EXCLAMATION}!!! This code works ${adverb_manner}!")
+praise("HOLY ${creating}, Batman - this code works ${ADVERB_MANNER}!")
+
+```
+```{r}
+say("I love tacos!", by = "rms")
+```
+
+
+## usethis for everything
+
+
+
+
+
+
+
+
+
+
+
