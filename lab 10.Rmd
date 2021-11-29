@@ -41,10 +41,44 @@ say("I love tacos!", by = "rms")
 
 
 ## usethis for everything
+usethis::edit_r_profile() to change settings
+
+-usethis::use_git()
+-usethis::use_github()
+
+
+## paletteer: aggregated color palettes
+```{r}
+storms %>% 
+  group_by(name) %>% 
+  summarize(min_pressure = min(pressure, na.rm = TRUE)) %>% 
+  slice_min(n = 10, min_pressure) %>% 
+  ggplot(aes(x = min_pressure, y = name))+
+  geom_col(aes(fill = name))+
+  scale_fill_paletteer_d("ggprism::earth_tones")#"package name:: palette name"
+
+```
 
 
 
+## map of Jornada LTER vegetation
 
+```{r}
+jornata_veg <- read_sf("doc.kml") %>% 
+  select(Name) %>% 
+  clean_names()
+
+ggplot()+
+  geom_sf(data = jornata_veg, aes(fill = name), color = NA) +
+  scale_fill_paletteer_d("palettetown::bulbasaur")+
+  theme_classic()+
+  labs(title = "jornada Basin LTER Vegetation")
+#update map so each veg type has a different fill color, update theme and customize the color palette
+#ggthemes::manyeys
+
+ggsave(filename = "my_awesome_jornata_map.png", width = 8, height = 5)
+
+```
 
 
 
